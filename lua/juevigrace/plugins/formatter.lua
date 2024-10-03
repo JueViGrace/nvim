@@ -11,6 +11,7 @@ return {
 				javascriptreact = { "ts-standard", "standardjs", "prettier" },
 				typescriptreact = { "ts-standard", "standardjs", "prettier" },
 				svelte = { "prettier" },
+				astro = { "prettier" },
 				css = { "prettier" },
 				html = { "prettier" },
 				json = { "prettier" },
