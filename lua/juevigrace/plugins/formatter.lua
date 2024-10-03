@@ -6,12 +6,11 @@ return {
 
 		conform.setup({
 			formatters_by_ft = {
-				javascript = { "ts-standard", "standardjs", "prettier" },
-				typescript = { "ts-standard", "standardjs", "prettier" },
-				javascriptreact = { "ts-standard", "standardjs", "prettier" },
-				typescriptreact = { "ts-standard", "standardjs", "prettier" },
+				javascript = { "prettier" },
+				typescript = { "prettier" },
+				javascriptreact = { "prettier" },
+				typescriptreact = { "prettier" },
 				svelte = { "prettier" },
-				astro = { "prettier" },
 				css = { "prettier" },
 				html = { "prettier" },
 				json = { "prettier" },
