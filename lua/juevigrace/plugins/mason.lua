@@ -27,6 +27,7 @@ return {
                 "gopls",
                 "goimports",
                 "gofumpt",
+                "htmlhint",
             },
         },
         ---@param opts MasonSettings | {ensure_installed: string[]}
@@ -56,6 +57,7 @@ return {
     {
         "williamboman/mason-lspconfig.nvim",
         dependencies = {
+            "williamboman/mason.nvim",
             "hrsh7th/cmp-nvim-lsp",
         },
         config = function()
