@@ -21,7 +21,7 @@ return {
 				go = { "gofumpt", "goimports" },
 				kotlin = { "klint" },
 				php = { "php-cs-fixer" },
-				sql = { "sql-formatter" },
+				sql = { "sql-fmt" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
