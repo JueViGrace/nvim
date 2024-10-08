@@ -84,7 +84,6 @@ return {
 					"html",
 					"htmx",
 					"tailwindcss",
-					"eslint",
 					"ts_ls",
 					"jsonls",
 					"intelephense",
