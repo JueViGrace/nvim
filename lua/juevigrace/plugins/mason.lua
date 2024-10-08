@@ -20,7 +20,6 @@ return {
 				"prettier",
 				"sqlfluff",
 				"sql-formatter",
-				"standardjs",
 				"js-debug-adapter",
 				"java-debug-adapter",
 				"java-test",
