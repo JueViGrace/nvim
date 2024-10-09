@@ -6,6 +6,7 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 			"hrsh7th/nvim-cmp",
 			"j-hui/fidget.nvim",
+			"nvim-treesitter/nvim-treesitter",
 		},
 		config = function()
 			vim.diagnostic.config({

@@ -1,5 +1,8 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+	dependencies = {
+		"nushell/tree-sitter-nu",
+	},
 	build = ":TSUpdate",
 	opts = {
 		-- A list of parser names, or "all"
@@ -58,8 +61,17 @@ return {
 			additional_vim_regex_highlighting = { "markdown" },
 		},
 	},
-	config = function()
+	config = function(_, opts)
 		local treesitter_parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+
+		treesitter_parser_config.nu = {
+			install_info = {
+				url = "https://github.com/nushell/tree-sitter-nu",
+				files = { "src/parser.c" },
+				branch = "main",
+			},
+			filetype = "nu",
+		}
 
 		treesitter_parser_config.templ = {
 			install_info = {
@@ -70,5 +82,9 @@ return {
 		}
 
 		vim.treesitter.language.register("templ", "templ")
+
+		if type(opts.ensure_installed) == "table" then
+			vim.list_extend(opts.ensure_installed, { "nu" })
+		end
 	end,
 }
