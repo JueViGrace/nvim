@@ -11,7 +11,19 @@ end
 vim.filetype.add({
 	extension = {
 		templ = "templ",
+		astro = "astro",
+		svelte = "svelte",
 	},
+})
+
+autocmd({
+	"BufRead",
+	"BufNewFile",
+}, {
+	pattern = "*.svelte",
+	callback = function()
+		vim.opt.syntax = "html"
+	end,
 })
 
 autocmd("TextYankPost", {
