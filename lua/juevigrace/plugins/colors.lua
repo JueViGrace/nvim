@@ -12,8 +12,8 @@ return {
 	-- 	name = "rose-pine",
 	-- 	config = function()
 	-- 		require("rose-pine").setup({
-	-- 			variant = "auto", -- auto, main, moon, or dawn
-	-- 			dark_variant = "main", -- main, moon, or dawn
+	-- 			variant = "moon", -- auto, main, moon, or dawn
+	-- 			dark_variant = "moon", -- main, moon, or dawn
 	-- 			dim_inactive_windows = false,
 	-- 			extend_background_behind_borders = true,
 	--
@@ -59,13 +59,27 @@ return {
 	-- 				h5 = "pine",
 	-- 				h6 = "foam",
 	-- 			},
+	--
+	-- 			before_highlight = function(group, highlight, palette)
+	-- 				if highlight.italic then
+	-- 					highlight.italic = false
+	-- 				end
+	-- 				if highlight.bold then
+	-- 					highlight.bold = false
+	-- 				end
+	-- 				--
+	-- 				-- Change palette colour
+	-- 				-- if highlight.fg == palette.pine then
+	-- 				--     highlight.fg = palette.foam
+	-- 				-- end
+	-- 			end,
 	-- 		})
 	--
 	-- 		-- vim.cmd("colorscheme rose-pine")
 	-- 		-- vim.cmd("colorscheme rose-pine-main")
 	-- 		-- vim.cmd("colorscheme rose-pine-moon")
 	-- 		-- vim.cmd("colorscheme rose-pine-dawn")
-	-- 		ColorMyPencils("rose-pine")
+	-- 		ColorMyPencils("rose-pine-moon")
 	-- 	end,
 	-- },
 	{
