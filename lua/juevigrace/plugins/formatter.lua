@@ -23,8 +23,8 @@ return {
 				python = { "black" },
 				go = { "gofumpt", "goimports" },
 				kotlin = { "klint" },
-				php = { "php-cs-fixer" },
-				sql = { "sql-formatter" },
+				php = { "php_cs_fixer" },
+				sql = { "sql_formatter" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
