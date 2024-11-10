@@ -9,6 +9,7 @@ return {
 			ensure_installed = {
 				"stylua",
 				"detekt",
+				"kotlin-debug-adapter",
 				"luacheck",
 				"phpcs",
 				"pylint",
