@@ -30,6 +30,7 @@ return {
 				"goimports",
 				"gofumpt",
 				"htmlhint",
+				"clangd",
 				"cpptools",
 				"cpplint",
 				"clang-format",

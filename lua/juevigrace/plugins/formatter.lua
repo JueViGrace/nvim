@@ -25,6 +25,7 @@ return {
 				kotlin = { "klint" },
 				php = { "php_cs_fixer" },
 				sql = { "sqlfmt" },
+				cpp = { "clang-format" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
