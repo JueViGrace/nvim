@@ -20,6 +20,7 @@ return {
 			"typescript",
 			"tsx",
 			"c",
+			"cpp",
 			"lua",
 			"rust",
 			"jsdoc",
