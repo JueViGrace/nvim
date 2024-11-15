@@ -20,7 +20,7 @@ return {
 				"php-cs-fixer",
 				"prettier",
 				"sqlfluff",
-				"sql-formatter",
+				"sqlfmt",
 				"js-debug-adapter",
 				"java-debug-adapter",
 				"java-test",
@@ -30,6 +30,9 @@ return {
 				"goimports",
 				"gofumpt",
 				"htmlhint",
+				"cpptools",
+				"cpplint",
+				"clang-format",
 			},
 		},
 		---@param opts MasonSettings | {ensure_installed: string[]}
