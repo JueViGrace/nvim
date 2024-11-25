@@ -22,7 +22,7 @@ return {
 				lua = { "stylua" },
 				python = { "black" },
 				go = { "gofumpt", "goimports" },
-				kotlin = { "klint" },
+				kotlin = { "ktlint" },
 				php = { "php_cs_fixer" },
 				sql = { "sqlfmt" },
 				cpp = { "clang_format" },
