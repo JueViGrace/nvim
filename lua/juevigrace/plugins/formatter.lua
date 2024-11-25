@@ -25,7 +25,7 @@ return {
 				kotlin = { "klint" },
 				php = { "php_cs_fixer" },
 				sql = { "sqlfmt" },
-				cpp = { "clang-format" },
+				cpp = { "clang_format" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
@@ -50,6 +50,12 @@ return {
 						"prettier.config.mjs",
 					}),
 				},
+			},
+			clang_format = {
+				require_cwd = true,
+				cwd = require("conform.util").root_file({
+					".clang-format",
+				}),
 			},
 		})
 

@@ -8,7 +8,6 @@ return {
 		opts = {
 			ensure_installed = {
 				"stylua",
-				"detekt",
 				"kotlin-debug-adapter",
 				"luacheck",
 				"phpcs",
