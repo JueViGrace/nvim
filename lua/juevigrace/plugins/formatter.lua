@@ -26,6 +26,7 @@ return {
 				php = { "php_cs_fixer" },
 				sql = { "sqlfmt" },
 				cpp = { "clang_format" },
+				dart = { "dcm" },
 			},
 			format_on_save = {
 				lsp_fallback = true,

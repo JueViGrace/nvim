@@ -33,6 +33,8 @@ return {
 				"cpptools",
 				"cpplint",
 				"clang-format",
+				"dart-debug-adapter",
+				"dcm",
 			},
 		},
 		---@param opts MasonSettings | {ensure_installed: string[]}
