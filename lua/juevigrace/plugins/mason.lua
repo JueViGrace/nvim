@@ -34,7 +34,6 @@ return {
 				"cpplint",
 				"clang-format",
 				"dart-debug-adapter",
-				"dcm",
 			},
 		},
 		---@param opts MasonSettings | {ensure_installed: string[]}
@@ -99,6 +98,7 @@ return {
 					"harper_ls",
 					"yamlls",
 					"astro",
+					"dcm",
 				},
 				handlers = {
 					function(server_name)
