@@ -55,7 +55,35 @@ return {
         pyright = {},
         sqlls = {},
         gradle_ls = {},
-        kotlin_language_server = {},
+        kotlin_language_server = {
+          cmd = { "kotlin-language-server" },
+          filetypes = { "kotlin" },
+          root_dir = function(fname)
+            return require("lspconfig.util").root_pattern("settings.gradle", "settings.gradle.kts", "build.gradle", "build.gradle.kts", "pom.xml")(fname)
+          end,
+          settings = {
+            kotlin = {
+              compiler = {
+                jvm = {
+                  target = "1.8"
+                }
+              },
+              completion = {
+                enabled = true
+              },
+              diagnostics = {
+                enabled = true
+              },
+              formatting = {
+                enabled = true
+              }
+            }
+          },
+          -- Add path configuration
+          cmd_env = {
+            PATH = vim.fn.expand("$HOME/.local/share/kotlin/server/bin") .. ":" .. vim.fn.expand("$PATH")
+          }
+        },
         jdtls = {},
         dcm = {},
         html = {},
@@ -68,7 +96,7 @@ return {
         yamlls = {},
         dockerls = {},
         docker_compose_language_service = {},
-        nil_ls = {},
+        -- nil_ls = {},
         harper_ls = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
