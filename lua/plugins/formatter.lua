@@ -43,6 +43,7 @@ return { -- Autoformat
       yaml = { "yamlfmt" },
       markdown = { "prettier", "prettierd" },
       -- Conform can also run multiple formatters sequentially
+      nix = { "alejandra" },
       go = { "gofumpt", "goimports", stop_after_first = true },
       kotlin = { "ktlint" },
       java = { "google-java-format" },
