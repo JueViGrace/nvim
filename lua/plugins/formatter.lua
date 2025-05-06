@@ -57,6 +57,11 @@ return { -- Autoformat
 
     local config = vim.tbl_deep_extend("force", opts, {
       formatters = {
+        ktlint = {
+          cmd_env = {
+            PATH = vim.fn.expand("$HOME/.local/share/kotlin/ktlint/ktlint") .. ":" .. vim.fn.expand("$PATH")
+          },
+        },
         prettier = {
           require_cwd = true,
           cwd = require("conform.util").root_file({

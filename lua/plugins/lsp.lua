@@ -59,30 +59,60 @@ return {
           cmd = { "kotlin-language-server" },
           filetypes = { "kotlin" },
           root_dir = function(fname)
-            return require("lspconfig.util").root_pattern("settings.gradle", "settings.gradle.kts", "build.gradle", "build.gradle.kts", "pom.xml")(fname)
+            return require("lspconfig.util").root_pattern(
+              "settings.gradle",
+              "settings.gradle.kts",
+              "build.gradle",
+              "build.gradle.kts",
+              "pom.xml"
+            )(fname)
           end,
           settings = {
             kotlin = {
               compiler = {
                 jvm = {
-                  target = "1.8"
-                }
+                  target = "21",
+                },
               },
               completion = {
-                enabled = true
+                enabled = true,
               },
               diagnostics = {
-                enabled = true
+                enabled = true,
               },
               formatting = {
-                enabled = true
-              }
-            }
+                enabled = true,
+              },
+              analysis = {
+                -- Add analysis settings to help with resolution
+                resolve = {
+                  jvm = {
+                    target = "21",
+                  },
+                },
+              },
+            },
           },
-          -- Add path configuration
           cmd_env = {
-            PATH = vim.fn.expand("$HOME/.local/share/kotlin/server/bin") .. ":" .. vim.fn.expand("$PATH")
-          }
+            PATH = vim.fn.expand("$HOME/.local/share/kotlin/server/bin") .. ":" .. vim.fn.expand("$PATH"),
+            -- Add Java home if needed
+            JAVA_HOME = vim.fn.expand("$JAVA_HOME"),
+          },
+          -- Add initialization options
+          init_options = {
+            compiler = {
+              jvm = {
+                target = "21",
+              },
+            },
+            analysis = {
+              resolve = {
+                jvm = {
+                  target = "21",
+                },
+              },
+            },
+          },
         },
         jdtls = {},
         dcm = {},
