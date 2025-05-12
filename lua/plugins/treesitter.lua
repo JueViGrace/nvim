@@ -48,6 +48,7 @@ return { -- Highlight, edit, and navigate code
       "make",
       "sql",
       "dart",
+      "hyprlang",
     },
     -- Autoinstall languages that are not installed
     auto_install = true,

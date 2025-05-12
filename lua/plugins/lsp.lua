@@ -126,7 +126,7 @@ return {
         yamlls = {},
         dockerls = {},
         docker_compose_language_service = {},
-        nil_ls = {},
+        -- nil_ls = {},
         harper_ls = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -136,6 +136,7 @@ return {
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         ts_ls = {},
+        hyprls = {},
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
