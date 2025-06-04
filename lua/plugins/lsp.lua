@@ -94,7 +94,9 @@ return {
             },
           },
           cmd_env = {
-            PATH = vim.fn.expand("$HOME/.local/share/kotlin/server/bin") .. ":" .. vim.fn.expand("$PATH"),
+            PATH = vim.fn.expand("/usr/share/kotlin/kotlin-language-server/bin/kotlin-language-server")
+              .. ":"
+              .. vim.fn.expand("$PATH"),
             -- Add Java home if needed
             JAVA_HOME = vim.fn.expand("$JAVA_HOME"),
           },

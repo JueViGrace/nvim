@@ -59,7 +59,7 @@ return { -- Autoformat
       formatters = {
         ktlint = {
           cmd_env = {
-            PATH = vim.fn.expand("$HOME/.local/share/kotlin/ktlint/ktlint") .. ":" .. vim.fn.expand("$PATH"),
+            PATH = vim.fn.expand("/usr/bin/ktlint") .. ":" .. vim.fn.expand("$PATH"),
           },
         },
         prettier = {
