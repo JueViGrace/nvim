@@ -65,7 +65,7 @@ return {
               "build.gradle",
               "build.gradle.kts",
               "pom.xml"
-            )(fname)
+            )(fname) or vim.fn.getcwd()
           end,
           settings = {
             kotlin = {
