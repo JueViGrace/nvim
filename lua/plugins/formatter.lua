@@ -31,6 +31,9 @@ return { -- Autoformat
     formatters_by_ft = {
       lua = { "stylua" },
       -- You can use 'stop_after_first' to run the first available formatter from the list
+      sh = { "shfmt" },
+      bash = { "shfmt" },
+      zsh = { "shfmt" },
       javascript = { "prettier", "prettierd" },
       typescript = { "prettier", "prettierd" },
       javascriptreact = { "prettier", "prettierd" },

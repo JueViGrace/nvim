@@ -160,7 +160,7 @@ return {
         "sqlfmt",
         "yamlfmt",
         "alejandra",
-        "beautysh",
+        "shfmt",
 
         -- DAPs
         "bash-debug-adapter",
