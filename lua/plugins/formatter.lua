@@ -6,7 +6,7 @@ return { -- Autoformat
     {
       "<leader>f",
       function()
-        require("conform").format({ async = true, lsp_format = "fallback" })
+        require("conform").format({ async = true, lsp_format = "fallback", lsp_fallback = true, timeout_ms = 2000 })
       end,
       mode = { "n", "v" },
       desc = "[F]ormat buffer",
@@ -18,7 +18,7 @@ return { -- Autoformat
       -- Disable "format_on_save lsp_fallback" for languages that don't
       -- have a well standardized coding style. You can add additional
       -- languages here or re-enable it for the disabled ones.
-      local disable_filetypes = { c = true, cpp = true }
+      local disable_filetypes = {}
       if disable_filetypes[vim.bo[bufnr].filetype] then
         return nil
       else
@@ -48,10 +48,11 @@ return { -- Autoformat
       -- Conform can also run multiple formatters sequentially
       nix = { "alejandra" },
       go = { "gofumpt", "goimports", stop_after_first = true },
-      kotlin = { "ktlint" },
+      kotlin = { "ktlint", "ktfmt", stop_after_first = true },
       java = { "google-java-format" },
       sql = { "sqlfmt" },
       cpp = { "clang_format" },
+      c = { "clang_format" },
       dart = { "dcm" },
     },
   },
@@ -60,11 +61,11 @@ return { -- Autoformat
 
     local config = vim.tbl_deep_extend("force", opts, {
       formatters = {
-        ktlint = {
-          cmd_env = {
-            PATH = vim.fn.expand("/usr/bin/ktlint") .. ":" .. vim.fn.expand("$PATH"),
-          },
-        },
+        -- ktlint = {
+        --   command = "/home/juevigrace/.local/share/nvim/mason/packages/ktlint/ktlint",
+        --   args = { "--format" },
+        --   stdin = true,
+        -- },
         prettier = {
           require_cwd = true,
           cwd = require("conform.util").root_file({

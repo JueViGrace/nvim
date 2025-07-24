@@ -31,53 +31,58 @@ return {
   {
     "mfussenegger/nvim-dap",
   },
-  {
-    "scalameta/nvim-metals",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "j-hui/fidget.nvim",
-      "mfussenegger/nvim-dap",
-    },
-    ft = { "scala", "java", "sbt", "kotlin" },
-    opts = function()
-      local metals_config = require("metals").bare_config()
-
-      -- Example of settings
-      metals_config.settings = {
-        showImplicitArguments = true,
-        excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
-      }
-
-      -- *READ THIS*
-      -- I *highly* recommend setting statusBarProvider to either "off" or "on"
-      --
-      -- "off" will enable LSP progress notifications by Metals and you'll need
-      -- to ensure you have a plugin like fidget.nvim installed to handle them.
-      --
-      -- "on" will enable the custom Metals status extension and you *have* to have
-      -- a have settings to capture this in your statusline or else you'll not see
-      -- any messages from metals. There is more info in the help docs about this
-      metals_config.init_options.statusBarProvider = "off"
-
-      -- Example if you are using cmp how to make sure the correct capabilities for snippets are set
-      metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
-      metals_config.on_attach = function(client, bufnr)
-        require("metals").setup_dap()
-      end
-
-      return metals_config
-    end,
-    config = function(self, metals_config)
-      local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = self.ft,
-        callback = function()
-          require("metals").initialize_or_attach(metals_config)
-        end,
-        group = nvim_metals_group,
-      })
-    end,
-  },
+  -- {
+  --   "scalameta/nvim-metals",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "j-hui/fidget.nvim",
+  --     "mfussenegger/nvim-dap",
+  --   },
+  --   ft = { "scala", "java", "sbt", "kotlin", "kt", "kts" },
+  --   opts = function()
+  --     local metals_config = require("metals").bare_config()
+  --
+  --     -- Example of settings
+  --     metals_config.settings = {
+  --       showImplicitArguments = true,
+  --       excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
+  --     }
+  --
+  --     -- *READ THIS*
+  --     -- I *highly* recommend setting statusBarProvider to either "off" or "on"
+  --     --
+  --     -- "off" will enable LSP progress notifications by Metals and you'll need
+  --     -- to ensure you have a plugin like fidget.nvim installed to handle them.
+  --     --
+  --     -- "on" will enable the custom Metals status extension and you *have* to have
+  --     -- a have settings to capture this in your statusline or else you'll not see
+  --     -- any messages from metals. There is more info in the help docs about this
+  --     metals_config.init_options.statusBarProvider = "on"
+  --
+  --     -- Example if you are using cmp how to make sure the correct capabilities for snippets are set
+  --     metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
+  --     metals_config.on_attach = function(client, bufnr)
+  --       require("metals").setup_dap()
+  --     end
+  --
+  --     return metals_config
+  --   end,
+  --   config = function(self, metals_config)
+  --     local metals = require("metals")
+  --     local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+  --     vim.api.nvim_create_autocmd("FileType", {
+  --       pattern = self.ft,
+  --       callback = function()
+  --         require("metals").initialize_or_attach(metals_config)
+  --       end,
+  --       group = nvim_metals_group,
+  --     })
+  --
+  --     vim.keymap.set("n", "<leader>mc", function()
+  --       require("telescope").extensions.metals.commands()
+  --     end, { desc = "Metals Commands" })
+  --   end,
+  -- },
   {
     "williamboman/mason.nvim",
     keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
@@ -107,7 +112,18 @@ return {
         pyright = {},
         sqlls = {},
         gradle_ls = {},
-        kotlin_language_server = {},
+        kotlin_lsp = {
+          -- filetypes = { "kotlin", "kt", "kts" },
+          -- root_dir = function(fname)
+          --   return require("lspconfig.util").root_pattern(
+          --     "settings.gradle.kts",
+          --     "settings.gradle",
+          --     "build.gradle.kts",
+          --     "build.gradle",
+          --     "pom.xml"
+          --   )(fname)
+          -- end,
+        },
         jdtls = {},
         dcm = {},
         html = {},
@@ -121,7 +137,7 @@ return {
         dockerls = {},
         docker_compose_language_service = {},
         -- nil_ls = {},
-        harper_ls = {},
+        -- harper_ls = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -154,6 +170,7 @@ return {
         "black",
         "prettier",
         "prettierd",
+        "ktfmt",
         "google-java-format",
         "goimports",
         "clang-format",
