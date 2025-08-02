@@ -101,6 +101,8 @@ return {
       --  By default, Neovim doesn't support everything that is in the LSP specification.
       --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
       --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
+      local lspconfig = require("lspconfig.util")
+
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
@@ -126,8 +128,13 @@ return {
         },
         jdtls = {},
         dcm = {},
-        html = {},
-        htmx = {},
+        html = {
+          filetypes = { "html", "astro" },
+        },
+        htmx = {
+          -- Other htmx_lsp configurations...
+          filetypes = { "html", "astro", "templ" }, -- Add 'astro' if htmx_lsp also handles .astro files for HTML
+        },
         cssls = {},
         tailwindcss = {},
         svelte = {},
@@ -145,7 +152,17 @@ return {
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        ts_ls = {},
+        ts_ls = {
+          filetypes = {
+            "typescript",
+            "typescriptreact",
+            "javascript",
+            "javascriptreact",
+            "vue", -- if you use Vue with TS
+            "astro", -- if you use Astro with TS (requires astro-language-server)
+          },
+          root_dir = lspconfig.root_pattern("tsconfig.json", "jsconfig.json", ".git"),
+        },
         hyprls = {},
         lua_ls = {
           -- cmd = { ... },
