@@ -190,6 +190,7 @@ return {
         "ktfmt",
         "google-java-format",
         "goimports",
+        "gofumpt",
         "clang-format",
         "sqlfmt",
         "yamlfmt",
