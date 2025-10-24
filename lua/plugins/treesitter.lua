@@ -13,6 +13,7 @@ return { -- Highlight, edit, and navigate code
       "bash",
       "c",
       "cpp",
+      "rust",
       "diff",
       "lua",
       "luadoc",
