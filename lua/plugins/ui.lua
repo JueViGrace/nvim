@@ -43,7 +43,6 @@ return {
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
-  ,
   {
     "folke/noice.nvim",
     event = "VeryLazy",
