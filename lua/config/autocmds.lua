@@ -14,6 +14,14 @@ autocmd("TextYankPost", {
   end,
 })
 
+autocmd("VimEnter", {
+  desc = "Update treesitter",
+  callback = function()
+    vim.cmd("TSUpdate")
+    vim.cmd("TSUpdateSync")
+  end,
+})
+
 --  This function gets run when an LSP attaches to a particular buffer.
 --
 --    That is to say, every time a new file is opened that is associated with
