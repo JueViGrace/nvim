@@ -48,7 +48,8 @@ return { -- Autoformat
       -- Conform can also run multiple formatters sequentially
       nix = { "alejandra" },
       go = { "goimports", "gofumpt", stop_after_first = true },
-      kotlin = { "ktlint", "ktfmt", stop_after_first = true },
+      kotlin = { "ktlint" },
+      kotlin_script = { "ktlint" },
       java = { "google-java-format" },
       sql = { "sqlfmt" },
       cpp = { "clang_format" },
@@ -61,11 +62,6 @@ return { -- Autoformat
 
     local config = vim.tbl_deep_extend("force", opts, {
       formatters = {
-        -- ktlint = {
-        --   command = "/home/juevigrace/.local/share/nvim/mason/packages/ktlint/ktlint",
-        --   args = { "--format" },
-        --   stdin = true,
-        -- },
         prettier = {
           require_cwd = true,
           cwd = require("conform.util").root_file({

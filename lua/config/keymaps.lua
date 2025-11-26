@@ -5,7 +5,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Project View keymap
-vim.keymap.set("n", "pv", vim.cmd.Ex, { desc = "[P]roject [V]iew" })
+vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "[P]roject [V]iew" })
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true

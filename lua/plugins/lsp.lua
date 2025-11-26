@@ -31,6 +31,34 @@ return {
   {
     "mfussenegger/nvim-dap",
   },
+  {
+    {
+      "stevearc/oil.nvim",
+      ---@module 'oil'
+      ---@type oil.SetupOpts
+      opts = {},
+      -- Optional dependencies
+      -- dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+      dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+      -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+      lazy = false,
+    },
+    "AlexandrosAlexiou/kotlin.nvim",
+    ft = { "kotlin", "kts" },
+    dependencies = { "mason.nvim", "mason-lspconfig.nvim", "oil.nvim" },
+    config = function()
+      require("kotlin").setup({
+        -- Optional: Specify root markers for multi-module projects
+        root_markers = {
+          "gradlew",
+          ".git",
+          "mvnw",
+          "settings.gradle",
+          "settings.gradle.kts",
+        },
+      })
+    end,
+  },
   -- {
   --   "scalameta/nvim-metals",
   --   dependencies = {
@@ -107,6 +135,7 @@ return {
       capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
       local servers = {
+        ast_grep = {},
         bashls = {},
         clangd = {},
         gopls = {},
@@ -114,18 +143,7 @@ return {
         pyright = {},
         sqlls = {},
         gradle_ls = {},
-        kotlin_lsp = {
-          -- filetypes = { "kotlin", "kt", "kts" },
-          -- root_dir = function(fname)
-          --   return require("lspconfig.util").root_pattern(
-          --     "settings.gradle.kts",
-          --     "settings.gradle",
-          --     "build.gradle.kts",
-          --     "build.gradle",
-          --     "pom.xml"
-          --   )(fname)
-          -- end,
-        },
+        kotlin_lsp = {},
         jdtls = {},
         dcm = {},
         html = {
@@ -187,7 +205,6 @@ return {
         "black",
         "prettier",
         "prettierd",
-        "ktfmt",
         "google-java-format",
         "goimports",
         "gofumpt",
@@ -198,12 +215,12 @@ return {
         "shfmt",
 
         -- DAPs
-        "bash-debug-adapter",
-        "kotlin-debug-adapter",
-        "debugpy",
-        "js-debug-adapter",
-        "delve",
-        "dart-debug-adapter",
+        -- "bash-debug-adapter",
+        -- "kotlin-debug-adapter",
+        -- "debugpy",
+        -- "js-debug-adapter",
+        -- "delve",
+        -- "dart-debug-adapter",
 
         -- Linters
         "shellcheck",
@@ -218,6 +235,7 @@ return {
         "cpplint",
         "hadolint",
         "checkmake",
+        "detekt",
 
         -- Formatters/Linters
         "ktlint",
